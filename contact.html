@@ -2,64 +2,113 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>お問い合わせ - ○○工務店</title>
+  <title>お問い合わせ - Fortan Construction</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 20px;
-      background: #f9f9f9;
-    }
-    h1 {
+      background-color: #e0e0e0;
       color: #333;
+      padding: 40px 20px;
     }
-    form {
-      max-width: 500px;
-      margin: auto;
-      background: #fff;
+    nav ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      background-color: #004080;
+      padding: 10px 0;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      max-width: 700px;
+      margin: 40px auto;
       padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-    label {
-      display: block;
-      margin-top: 10px;
+    h1, h2 {
+      color: #004080;
     }
     input, textarea {
       width: 100%;
-      padding: 8px;
+      padding: 10px;
       margin-top: 5px;
-      border: 1px solid #ccc;
+      margin-bottom: 15px;
       border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
     }
     button {
-      margin-top: 15px;
-      padding: 10px 15px;
-      background: #0078d7;
-      color: #fff;
+      padding: 10px 20px;
+      background-color: #004080;
+      color: white;
       border: none;
       border-radius: 5px;
       cursor: pointer;
     }
     button:hover {
-      background: #005a9e;
+      background-color: #0066cc;
     }
   </style>
 </head>
 <body>
-  <h1>お問い合わせ</h1>
-  <p>ご相談やご質問は、以下のフォームからお気軽にご連絡ください。</p>
 
-  <form>
+<nav>
+  <ul>
+    <li><a href="index.html">ホーム</a></li>
+    <li><a href="services.html">事業内容</a></li>
+    <li><a href="works.html">施工事例</a></li>
+    <li><a href="contact.html">お問い合わせ</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+  <h1>お問い合わせ</h1>
+  <form id="contactForm" action="https://formspree.io/f/xanpjrqn" method="POST">
     <label for="name">お名前</label>
-    <input type="text" id="name" name="name" required>
+    <input type="text" id="name" name="name" placeholder="山田 太郎" required>
 
     <label for="email">メールアドレス</label>
-    <input type="email" id="email" name="email" required>
+    <input type="email" id="email" name="email" placeholder="example@mail.com" required>
 
     <label for="message">お問い合わせ内容</label>
-    <textarea id="message" name="message" rows="5" required></textarea>
+    <textarea id="message" name="message" rows="6" placeholder="内容を入力してください" required></textarea>
 
     <button type="submit">送信</button>
   </form>
+</div>
+
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault(); // ページリロードを防ぐ
+    var form = e.target;
+    fetch(form.action, {
+        method: form.method,
+        body: new FormData(form),
+        headers: {
+            'Accept': 'application/json'
+        }
+    }).then(response => {
+        if (response.ok) {
+            window.location.href = 'thankyou.html'; // 送信成功でthankyou.htmlへ
+        } else {
+            alert('送信に失敗しました。もう一度お試しください。');
+        }
+    }).catch(() => {
+        alert('送信中にエラーが発生しました。');
+    });
+});
+</script>
+
 </body>
 </html>
