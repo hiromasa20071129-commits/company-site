@@ -19,7 +19,6 @@
 ![施工事例ページ](./works_screenshot.png)
 ![お問い合わせページ](./contact_screenshot.png)
 ![ありがとうございましたページ](./thankyou_screenshot.png)
-)
 
 
 ---
