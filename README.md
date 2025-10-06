@@ -17,6 +17,7 @@
 ![ホームページ](home_screenshot.png)
 ![事業内容ページ](services_screenshot.png)
 ![施工事例ページ](works_screenshot.png)
+![施工事例ページ](works_screenshot.png)
 ![お問い合わせページ](contact_screenshot.png)
 ![ありがとうございましたページ](thankyou_screenshot.png)
 
